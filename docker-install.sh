@@ -31,6 +31,12 @@ fi
 
 # if not running, start dockerd
 if [[ $(ps aux | grep '/usr/bin/dockerd' | wc -l) == "1" ]]; then
+	# needed for debian WSL apparently to deal with some NAT issues
+	# https://stackoverflow.com/a/70877542
+	sudo touch /etc/fstab/
+	sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+	sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+
 	sudo /etc/init.d/docker start
 fi
 
