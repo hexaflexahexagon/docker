@@ -40,5 +40,9 @@ if [[ $(ps aux | grep '/usr/bin/dockerd' | wc -l) == "1" ]]; then
 	sudo /etc/init.d/docker start
 fi
 
+# install docker-compose too
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
 # test if everything worked
 docker run hello-world
