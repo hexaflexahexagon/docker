@@ -55,3 +55,6 @@ https://packetpushers.net/building-a-docker-network-automation-container/
 Image vs Container: 
 https://phoenixnap.com/kb/docker-image-vs-container
 
+Basic Networking: 
+https://www.youtube.com/watch?v=j_UUnlVC2Ss
+
