@@ -1,0 +1,26 @@
+version: "3.3"
+
+services:
+  mc:
+    image: itzg/minecraft-server
+    ports: 
+      - 25565:25565
+
+    environment:
+      EULA: "TRUE"
+
+      ICON: "https://static-cdn.jtvnw.net/jtv_user_pictures/7df202ec-b0f9-432f-a27e-18b7eafdb425-profile_image-150x150.png"
+      MOTD: "My cool server"
+      
+      DIFFICULTY: "easy"
+      ALLOW_FLIGHT: "TRUE"
+
+      MEMORY: 2G
+
+    volumes:
+      - ./minecraft-data:/data
+
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+
