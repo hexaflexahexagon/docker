@@ -58,3 +58,6 @@ https://phoenixnap.com/kb/docker-image-vs-container
 Basic Networking: 
 https://www.youtube.com/watch?v=j_UUnlVC2Ss
 
+Linux Ethernet Bridging (make a switch): 
+https://wiki.linuxfoundation.org/networking/bridge
+
