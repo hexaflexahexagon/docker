@@ -3,13 +3,20 @@
 ## Notes
 
 - Hosts a minecraft server on localhost:25565
+- Note: Be sure the windows IP Helper service is _disabled_ before bringing the container up!
+
 - TODO: maybe try and limit init ram because it locks up my entire PC lol
 - TODO: change rcon password
-- TODO: investigate IP helper eating the port before WSL gets there
 
 ## Commands
 
-Bring up
+Set up - Powershell:
+```
+netsh interface portproxy delete v4tov4 listenport=25565 listenaddress=0.0.0.0
+net stop iphlpsvc
+```
+
+Start - WSL:
 ```
 docker-compose up -d
 ```
@@ -20,17 +27,18 @@ Log in:
 docker exec -it minecraft_mc_1 /bin/bash
 
 # Rcon
-docker exec -i mc rcon-cli
+docker exec -i minecraft_mc_1 rcon-cli
 
 ```
 
-Proxy port on windows machine when using WSL:
+Setup Windows portproxy for LAN:
 ```
+net start iphlpsvc
 netsh interface portproxy add v4tov4 listenport=25565 listenaddress=0.0.0.0 connectport=25565 connectaddress=localhost
 netsh interface portproxy show all
 ```
 
-Shut down
+Shut down:
 ```
 docker stop minecraft_mc_1
 ```
@@ -42,4 +50,7 @@ https://spin.atomicobject.com/2021/07/21/host-minecraft-server-docker/
 
 Server parameter documentation: 
 https://github.com/itzg/docker-minecraft-server#server-configuration
+
+IP Helper commands: 
+https://www.thewindowsclub.com/enable-or-disable-ip-helper-service-on-windows-10
 
