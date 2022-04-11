@@ -10,3 +10,5 @@ A basic repo showing some docker config things
 
 `gawk-serve/` - Container that runs detached and hosts a basic web server using GAWK
 
+`minecraft/` - Container that starts a minecraft server.
+
