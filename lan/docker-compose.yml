@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+    lan1pc1:
+        image: lan_base
+        build: ./lan_base
+        container_name: lan1pc1
+        networks:
+            - lan1
+
+        tty: true
+        stdin_open: true
+        restart: unless-stopped
+    
+    lan1pc2:
+        image: lan_base
+        build: ./lan_base
+        container_name: lan1pc2
+        networks:
+            - lan1
+
+        tty: true
+        stdin_open: true
+        restart: unless-stopped
+
+    lan1switch:
+        image: lan_base
+        build: ./lan_base
+        container_name: lan1switch
+        networks:
+            - lan1
+
+        tty: true
+        stdin_open: true
+        restart: unless-stopped
+
+networks:
+    lan1:
+        name: lan1
+        ipam:
+            config:
+                - subnet: 192.0.2.0/26
+    lan2:
+        name: lan2
+        ipam:
+            config:
+                - subnet: 192.0.2.64/26
+    wan:
+        name: wan
+        ipam:
+            config:
+                - subnet: 203.0.113.0/30
+
